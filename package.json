@@ -1,0 +1,19 @@
+{
+  "name": "chat-infobot_v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.56.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon temp.js"
+  },
+  "author": "SHEHEER ALI (SourceCODD India LLP)",
+  "license": "ISC"
+}
