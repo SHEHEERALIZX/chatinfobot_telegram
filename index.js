@@ -4,6 +4,9 @@ const token = "5162314638:AAFrt6eYZ1rJxtmyfHzTj9q7_h1-H6ES5Ys"; // User Verifica
 
 const bot = new TelegramBot(token, { polling: true });
 
+process.env.PORT 
+
+
 String.prototype.toHHMMSS = function () {
   var sec_num = parseInt(this, 10); // don't forget the second param
   var hours   = Math.floor(sec_num / 3600);
@@ -23,6 +26,8 @@ String.prototype.toHHMMSS = function () {
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
   console.log(msg);
+
+  console.log(process.env.PORT);
 
   bot.on('polling_error', (error) => {
     console.log(error);  // => 'EFATAL'
