@@ -6,6 +6,11 @@ const bot = new TelegramBot(token, { polling: true });
 
 process.env.PORT 
 
+const Tesseract =  require('tesseract.js');
+
+API_URL = `https://api.telegram.org/file/bot${token}/`
+
+
 
 String.prototype.toHHMMSS = function () {
   var sec_num = parseInt(this, 10); // don't forget the second param
@@ -93,4 +98,31 @@ bot.on("message", (msg) => {
   else {
     bot.sendMessage(chatId, "Received your message");
   }
+
+  console.log(msg.photo[0].file_id);
+
+  bot.getFileLink(msg.photo[2].file_id).then((image_url)=>{
+
+
+    Tesseract.recognize(
+      image_url,
+      'eng',
+      { logger: m => console.log(m) }
+    ).then(({ data: { text } }) => {
+      console.log(text);
+
+      let res = text.split(" ")
+
+      bot.sendMessage(chatId,res[1])
+    })
+
+    
+  })
+
 });
+
+
+
+
+
+
